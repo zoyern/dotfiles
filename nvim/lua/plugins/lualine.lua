@@ -3,11 +3,12 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
 		local lualine = require("lualine")
-		local lazy_status = require("lazy.status") -- Affiche le nombre de mises à jour des plugins lazy dans la barre
+		local lazy_status = require("lazy.status") -- affiche le nombre de mise à jour plugins lazy dans la barre
 
+		-- configuration de lualine
 		lualine.setup({
 			options = {
-				icons_enabled = true, -- Activer les icônes
+				icons_enabled = true,
 				theme = "auto",
 				component_separators = { left = "", right = "" },
 				section_separators = { left = "", right = "" },

@@ -50,7 +50,7 @@ opt.linebreak = true
 -- ajoute une indentation aux lignes cassées
 opt.breakindent = true
 -- petit symbole pour indiquer qu’une ligne est cassée
-opt.showbreak = "↪ "
+opt.showbreak = " ↪ "
 
 -- retour
 -- autorise retour arrière même en début de ligne ou sur indentation
@@ -97,4 +97,3 @@ opt.updatetime = 300
 -- sécurité
 -- empêche l'exécution de commandes en commentaire ou dangereuse
 opt.modelines = 0
-

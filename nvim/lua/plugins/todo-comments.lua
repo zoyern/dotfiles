@@ -5,17 +5,31 @@ return {
 	config = function()
 		local todo_comments = require("todo-comments")
 
-		-- set keymaps
-		local keymap = vim.keymap -- for conciseness
+		todo_comments.setup({
+			signs = true, -- Montre les icônes dans la marge des signes
+			sign_priority = 8, -- Priorité des signes
+			-- Mots-clés pour les commentaires TODO, avec des icônes
+			keywords = {
+				FIX = {
+					icon = " ", -- Icône pour FIX
+					color = "error",
+					alt = { "FIXME", "BUG", "FIXIT", "ISSUE" },
+				},
+				TODO = { icon = " ", color = "info" },
+				HACK = { icon = " ", color = "warning" },
+				WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
+				PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+				NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
+			},
+		})
 
+		-- set keymaps
+		local keymap = vim.keymap -- pour plus de concision
 		keymap.set("n", "]t", function()
 			todo_comments.jump_next()
 		end, { desc = "Next todo comment" })
-
 		keymap.set("n", "[t", function()
 			todo_comments.jump_prev()
 		end, { desc = "Previous todo comment" })
-
-		todo_comments.setup()
 	end,
 }
