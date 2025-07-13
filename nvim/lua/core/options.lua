@@ -88,12 +88,6 @@ opt.scrolloff = 8
 -- marge horizontale
 opt.sidescrolloff = 8
 
--- performance
--- améliore les perfs quand on scroll ou exécute macros
-opt.lazyredraw = true
--- délai pour les plugins comme gitgutter/lint
-opt.updatetime = 300
-
 -- sécurité
 -- empêche l'exécution de commandes en commentaire ou dangereuse
 opt.modelines = 0

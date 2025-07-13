@@ -54,6 +54,22 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/or
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal/ command "gnome-console"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal/ binding "<Primary><Alt>t"
 
+# === Installation oh-my-zsh + powerlevel10k ===
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    RUNZSH=no CHSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
+# Powerlevel10k theme (non tracké dans git)
+if [ ! -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" ]; then
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \
+        "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+fi
+
+# Symlinks vers les fichiers shell
+ln -sf "$HOME/.dotfiles/shell/.zshrc" "$HOME/.zshrc"
+ln -sf "$HOME/.dotfiles/shell/.p10k.zsh" "$HOME/.p10k.zsh"
+
+
 # === Nettoyage ===
 sudo dnf autoremove -y
 sudo dnf clean all

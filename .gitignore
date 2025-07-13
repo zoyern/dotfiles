@@ -1,0 +1,13 @@
+# Ne pas inclure les fichiers de cache ou temporaires
+*.swp
+*.swo
+*.tmp
+
+# Ne pas versionner les thèmes téléchargés
+shell/themes/*
+!.gitkeep
+
+# macOS/Linux
+.DS_Store
+.cache/
+
