@@ -6,6 +6,7 @@ Ce dépôt contient des fichiers de configuration (dotfiles) pour Zsh, Neovim et
 
 Pour installer rapidement la configuration sur une machine, copiez-collez simplement cette commande dans votre terminal :
 
+### 📥 Installation principal
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/zoyern/dotfiles/main/install.sh)
 ```
