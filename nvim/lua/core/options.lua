@@ -14,7 +14,7 @@ opt.shiftwidth = 4
 -- pour que <Tab> insère des espaces visuellement
 opt.softtabstop = 4
 -- change les tabulations en espaces
-opt.expandtab = false
+opt.expandtab = true
 -- adapte les tabulations en début de ligne
 opt.smarttab = true
 -- on garde l'indentation actuelle à la prochaine ligne

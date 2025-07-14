@@ -1,31 +1,36 @@
--- On définit notre touche leader sur espace
+-- Définir leader
 vim.g.mapleader = " "
 
--- Raccourci pour la fonction set
 local keymap = vim.keymap.set
+local opts = { noremap = true, silent = true }
 
--- on utilise ;; pour sortir du monde insertion
+-- Quitter l'insertion avec ;;
 keymap("i", ";;", "<ESC>", { desc = "Sortir du mode insertion avec ;;" })
 
--- on efface le surlignage de la recherche
+-- Effacer le surlignage de recherche
 keymap("n", "<leader>nh", ":nohl<CR>", { desc = "Effacer le surlignage de la recherche" })
 
--- I déplace le texte sélectionné vers le haut en mode visuel (activé avec v)
-keymap("v", "<S-i>", ":m .-2<CR>==", { desc = "Déplace le texte sélectionné vers le haut en mode visuel" })
--- K déplace le texte sélectionné vers le bas en mode visuel (activé avec v)
-keymap("v", "<S-k>", ":m .+1<CR>==", { desc = "Déplace le texte sélectionné vers le bas en mode visuel" })
+-- Déplacement de lignes en mode visuel (V)
+keymap("v", "<S-Up>", ":m .-2<CR>gv=gv", { desc = "Déplacer la sélection vers le haut" })
+keymap("v", "<S-Down>", ":m .+1<CR>gv=gv", { desc = "Déplacer la sélection vers le bas" })
 
--- I déplace le texte sélectionné vers le haut en mode visuel bloc (activé avec V)
-keymap("x", "<S-i>", ":move '<-2<CR>gv-gv", { desc = "Déplace le texte sélectionné vers le haut en mode visuel bloc" })
--- K déplace le texte sélectionné vers le bas en mode visuel (activé avec V)
-keymap("x", "<S-k>", ":move '>+1<CR>gv-gv", { desc = "Déplace le texte sélectionné vers le bas en mode visuel bloc" })
+-- Déplacement de lignes en mode visuel bloc (Ctrl-V)
+keymap("x", "<S-Up>", ":move '<-2<CR>gv-gv", { desc = "Déplacer la sélection bloc vers le haut" })
+keymap("x", "<S-Down>", ":move '>+1<CR>gv-gv", { desc = "Déplacer la sélection bloc vers le bas" })
 
--- Changement de fenêtre avec Ctrl + déplacement uniquement au lieu de Ctrl-w + déplacement
-keymap("n", "<C-h>", "<C-w>h", { desc = "Déplace le curseur dans la fenêtre de gauche" })
-keymap("n", "<C-j>", "<C-w>j", { desc = "Déplace le curseur dans la fenêtre du bas" })
-keymap("n", "<C-k>", "<C-w>k", { desc = "Déplace le curseur dans la fenêtre du haut" })
-keymap("n", "<C-l>", "<C-w>l", { desc = "Déplace le curseur dans la fenêtre droite" })
+-- Déplacement entre fenêtres avec Ctrl + flèches
+keymap("n", "<C-Left>", "<C-w>h", { desc = "Fenêtre gauche" })
+keymap("n", "<C-Down>", "<C-w>j", { desc = "Fenêtre bas" })
+keymap("n", "<C-Up>", "<C-w>k", { desc = "Fenêtre haut" })
+keymap("n", "<C-Right>", "<C-w>l", { desc = "Fenêtre droite" })
 
--- Navigation entre les buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+-- Navigation entre buffers avec Shift + flèches
+keymap("n", "<S-Left>", ":bprevious<CR>", { desc = "Buffer précédent", noremap = true, silent = true })
+keymap("n", "<S-Right>", ":bnext<CR>", { desc = "Buffer suivant", noremap = true, silent = true })
+
+-- Navigation entre onglets avec Alt + flèches
+keymap("n", "<A-Left>", "gT", { desc = "Onglet précédent" })
+keymap("n", "<A-Right>", "gt", { desc = "Onglet suivant" })
+
+vim.keymap.set("n", "<leader>q", ":bd<CR>", { desc = "Fermer le buffer actif" })
+vim.keymap.set("n", "<leader>q!", ":bd!<CR>", { desc = "Fermer le buffer actif" })
