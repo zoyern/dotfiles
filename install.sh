@@ -30,7 +30,7 @@ sudo systemctl start docker
 # === Dotfiles ===
 cd "$HOME"
 if [ ! -d "$HOME/.dotfiles" ]; then
-    git clone "$DOTFILES_GIT" .dotfiles
+    git clone "$DOTFILES_GIT" $HOME/.dotfiles
     echo "[INFO] Dotfiles clonés dans ~/.dotfiles"
     [ -f "$HOME/.dotfiles/init.vim" ] && mkdir -p ~/.config/nvim && ln -sf "$HOME/.dotfiles/init.vim" ~/.config/nvim/init.vim
     [ -f "$HOME/.dotfiles/.zshrc" ] && ln -sf "$HOME/.dotfiles/.zshrc" ~/.zshrc
